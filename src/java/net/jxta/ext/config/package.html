@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<HTML>
+  <HEAD>
+  </HEAD>
+  <BODY>
+    <p>The JXTA Extension Configuration package provides a number of ready to
+    use, extend and encapsulate configuration utilities.
+    
+    <p>The principal elements of the Configuration package are:
+    
+    <ul>
+      <li><a href="Configurator.html">Configurator API</a></li>
+      <li><a href="Profile.html">Profile Declarative Constructs</a></li>
+      <li><a href="ui/Configurator.html">Configurator UI</a></li>
+    </ul>
+    
+    <p>The <a href="Configurator.html">Configurator API</a> is predominately a
+    configuration bean (or property sheet) which entails the spectrum of JXTA
+    configuration attributes. A number of constructors are provided which allows
+    one to instantiate a <a href="Configurator.html">Configurator</a> object
+    after which any of the available getter/setter methods may be invoked as
+    desired. For most practical use cases, on need only invoke a handful of
+    methods afterwhich the derived PlatformConfig can be created and/or
+    persisted to a specified directory. Prior to generating a PlatformConfig,
+    the <a href="Configurator.html">Configurator</a> excersises it's current
+    state against normalization, optimization and validation rulesets. The
+    <a href="Configurator.html">Configurator</a> caller can, optionally,
+    register a number of <a href="Optimizer.html">Optimizer</a> implemenations
+    in order to specialize the derived PlatformConfig per the application
+    requirements. The validation process will generate a ConfigurationException
+    in the event of configuration failures that includes a chained list of
+    exceptions, one for each failure. A prototypical code sample is as follows:
+    
+    <pre>
+      URI home = new URI(new File(System.getProperty("user.home", "/.myjxta")));
+      Configurator c = new Configurator(home);
+      
+      c.setSecurity("usr", "pwd");
+      
+      try {
+        c.save();
+      } catch (ConfiguratorException ce) }
+        ce.printStackTrace();
+      }
+    </pre>
+    
+    <p>The <a href="Profile.html">Profile</a> constructs allows one to
+    optionally invoke the afore metioned <a href="Configurator.html">Configurator API</a> via
+    declarative means, as a structured XML file. This model allows one to
+    relatively easily vary the configuration paramaters an applications
+    configuration requirements. A number of prototypical profiles are provided
+    as ready to use templates. A prototypical code sample is as follows:
+    
+    <pre>
+      Profile p = new Profile(getClass().getResourceAsStream("/net/jxta/myjxta/resource/profile.xml"));
+      URL home = new URI(new File(System.getProperty("user.home", "/.myjxta")));
+      Configurator c = new Configurator(p, home);
+      
+      c.setSecurity("user", "pwd");
+      
+      try {
+        c.save();
+      } catch (ConfiguratorException ce) {
+        ce.printStackTrace();
+      }
+    </pre>
+    
+    <p>The <a href="ui/Configurator.html">Configurator UI</a> is a optional
+    tier that drives the afore mentioned <a href="Profile.html">Profile
+    constructs</a> by providing a series of reusible configuration UI
+    components.
+  </BODY>
+</HTML>

@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+
+<!--
+JXTA Platform Configurator (jxta.org)
+    
+Copyright (c) 2001 Sun Microsystems, Inc.  All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this
+list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice,
+this list of conditions and the following disclaimer in the documentation and/or
+other materials provided with the distribution.
+
+3. The end-user documentation included with the redistribution, if any, must
+include the following acknowledgment: "This product includes software developed
+by the Sun Microsystems, Inc. for Project JXTA." Alternately, this
+acknowledgment may appear in the software itself, if and wherever such
+third-party acknowledgments normally appear.
+
+4. The names "Sun", "Sun Microsystems, Inc.", "JXTA" and "Project JXTA" must
+not be used to endorse or promote products derived from this software without
+prior written permission. For written permission, please contact Project JXTA
+at http://www.jxta.org.
+
+5. Products derived from this software may not be called "JXTA", nor may "JXTA"
+appear in their name, without prior written permission of Sun.
+
+THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESSED OR IMPLIED WARRANTIES,
+INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE
+APACHE SOFTWARE FOUNDATION OR ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
+NDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+================================================================================
+
+This software consists of voluntary contributions made by many individuals on
+behalf of Project JXTA.  For more information on Project JXTA, please see
+<http://jxta.org>
+
+This license is based on the BSD license adopted by the Apache Foundation.
+
+$Id: profile.xsd,v 1.1 2007/01/16 11:01:31 thomas Exp $
+-->
+
+<!--
+<!DOCTYPE xsd:schema SYSTEM "http://www.w3c.org/2001/XMLSchema.dtd">
+-->
+
+<xsd:schema xmlns:jxta="http://www.jxta.org/net/jxta/ext/config"
+  xmlns:xsd="http://www.w3c.org/2001/XMLSchema.dtd">
+
+  <xsd:annotation>
+    <xsd:documentation xml:lang="en">
+    JXTA Configuration
+   
+    see http://www.jxta.org for more info.
+    </xsd:documentation>
+  </xsd:annotation>
+
+  <xsd:complexType name="jxta">
+    <xsd:sequence>
+      <xsd:element name="peer" type="jxta:Peer" minOccurs="1" maxOccurs="1"/>
+      <xsd:element name="network" type="jxta:Network" minOccurs="1"
+        maxOccurs="1"/>
+      <xsd:element name="transport" type="jxta:Transport" minOccurs="1"
+        maxOccurs="1"/>
+      <xsd:element name="service" type="jxta:Service" minOccurs="1"
+        maxOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="Peer">
+    <xsd:attribute name="name" type="xsd:string" use="optional"/>
+    <xsd:attribute name="id" type="jxta:PeerID" use="optional"/>
+    <xsd:attribute name="descriptor" type="xsd:string" use="optional"/>
+    <xsd:attribute name="home" type="xsd:anyURI" use="optional"
+      default="file://${user.home}/.jxta"/>
+    <xsd:attribute name="trace" type="jxta:Trace" use="optional"
+      default="user default"/>
+    <xsd:sequence>
+      <xsd:element name="description" type="jxta:Description" minOccurs="0"
+        maxOccurs="unbounded"/>
+      <xsd:element name="security" type="jxta:Security" minOccurs="0"
+        maxOccurs="1"/>
+      <xsd:element name="rootCert" type="jxta:RootCert" minOccurs="0"
+        maxOccurs="1"/>
+      <xsd:element name="proxy" type="jxta:ProxyAddress" minOccurs="0"
+        maxOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+   
+  <xsd:complexType name="Network">
+    <xsd:sequence>
+      <xsd:element name="rendezVous" type="jxta:RendezVous" minOccurs="0"
+        maxOccurs="1"/>
+      <xsd:element name="relays" type="jxta:Relays" minOccurs="0" maxOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name="Transport">
+    <xsd:sequence>
+      <xsd:element name="tcp" type="Tcp" minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name="http" type="Http" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name="Service">
+    <xsd:sequence>
+      <xsd:element name="rendezVous" type="jxta:RendezVousService" minOccurs="0"
+        maxOccurs="1"/>
+      <xsd:element name="relay" type="jxta:RelayService" minOccurs="0"
+        maxOccurs="1"/>
+      <xsd:element name="endpoint" type="jxta:EndpointService" minOccurs="0"
+        maxOccurs="1"/>
+      <xsd:element name="proxy" type="jxta:ProxyService" minOccurs="0"
+        maxOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+ 
+  <xsd:simpleType name="Trace">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="error"/>
+      <xsd:enumeration value="warn"/>
+      <xsd:enumeration value="info"/>
+      <xsd:enumeration value="debug"/>
+      <xsd:enumeration value="user default"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+ 
+  <xsd:complextType name="Description">
+    <xsd:all>
+    </xsd:all>
+  </xsd:complextType>
+ 
+  <xsd:complexType name="Security">
+    <xsd:attribute name="enabled" type="xsd:boolean" use="optional"
+      default="true"/>
+    <xsd:attribute name="principal" type="xsd:string" use="required"/>
+  </xsd:complexType>
+ 
+  <xsd:complexType name="RootCert">
+    <xsd:simpleContext>
+      <xsd:extension base="xsd:string">
+        <xsd:attribute name="address" type="xsd:anyURI" use="optional"/>
+      </xsd:extension>
+    </xsd:simpleContext>
+  </xsd:complexType>
+  
+  <xsd:complexType name="ProxyAddress">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:anyURI">
+        <xsd:attribute name="enabled" type="xsd:boolean" use="optional"
+          default="false"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  
+  <xsd:complexType name="RendezVous">
+    <xsd:attribute name="bootstrap" type="xsd:anyURI" use="optional"/>
+    <xsd:attribute name="discovery" type="xsd:boolean" use="optional"
+      default="true"/>
+    <xsd:element name="address" type="jxta:Address" minOccurs="0"
+      maxOccurs="unbounded" default="://"/>
+  </xsd:complexType>
+  
+  <xsd:complexType name="Relays">
+    <xsd:attribute name="bootstrap" type="xsd:anyURI" use="optional"/>
+    <xsd:attribute name="discovery" type="xsd:boolean" use="optional"
+      default="true"/>
+    <xsd:element name="address" type="jxta:Address" minOccurs="0"
+      maxOccurs="unbounded" default="//:"/>
+  </xsd:complexType>
+  
+  <xsd:complexType name="Reflection">
+    <xsd:attribute name="bootstrap" type="xsd:anyURI" use="optional"/>
+  </xsd:complexType>
+  
+  <xsd:element name="Address" type="xsd:anyURI"/>
+  
+  <xsd:complexType name="Tcp">
+    <xsd:attribute name="enabled" type="xsd:boolean" use="optional"
+      default="true"/>
+    <xsd:sequence>
+      <xsd:element name="incoming" type="jxta:TransportEndpoint" minOccurs="0"
+        maxOccurs="1"/>
+      <xsd:element name="outgoing" type="jxta:TransportEndpoint" minOccurs="0"
+        maxOccurs="1"/>
+      <xsd:element name="TcpAddress" type="TcpAddress" minOccurs="0"
+        maxOccurs="unbounded"/>
+      <xsd:element name="publicAddress" type="jxta:PublicAddress" minOccurs="0"
+        maxOccurs="unbounded" default="http://:"/>
+      <xsd:element name="proxy" type="jxta:ProxyAddress" minOccurs="0"
+        maxOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name="Http">
+    <xsd:attribute name="enabled" type="xsd:boolean" use="optional"
+      default="true"/>
+    <xsd:sequence>
+      <xsd:element name="incoming" type="jxta:TransportEndpoint" minOccurs="0"
+        maxOccurs="1"/>
+      <xsd:element name="outgoing" type="jxta:TransportEndpoint" minOccurs="0"
+        maxOccurs="1"/>
+      <xsd:element name="address" type="jxta:TransportAddress" minOccurs="0"
+        maxOccurs="unbounded" default="http://:"/>
+      <xsd:element name="publicAddress" type="jxta:PublicAddress" minOccurs="0"
+        maxOccurs="unbounded" default="http://:"/>
+      <xsd:element name="proxy" type="jxta:ProxyAddress" minOccurs="0"
+        maxOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name="TransportEndpoint">
+    <xsd:attribute name="enabled" type="xsd:boolean" use="optional"
+      default="false"/>
+  </xsd:complexType>
+  
+  <xsd:complexType name="TcpAddress">
+      <xsd:simpleContent>
+      <xsd:extension base="xsd:anyURI">
+        <xsd:attribute name="range" type="xsd:integer">
+          <xsd:restrictive>
+            <xsd:minInclusive value="0"/>
+            <xsd:maxInclusive value="65535"/>
+          </xsd:restrictive>
+        </xsd:attribute>
+        <xsd:sequence>
+          <xsd:element name="multicast" type="jxta:MulticastAddress"
+            minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  
+  <xsd:complexType name="TransportAddress">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:anyURI">
+        <xsd:attribute name="range" type="xsd:integer">
+          <xsd:restrictive>
+            <xsd:minInclusive value="0"/>
+            <xsd:maxInclusive value="65535"/>
+          </xsd:restrictive>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  
+  <xsd:complextType name="MulticastAddress">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:anyURI">
+        <xsd:attribute name="enabled" type="xsd:boolean" use="optional"
+          default="true"/>
+        <xsd:attribute name="size" type="xsd:nonNegativeInteger" use="optional"
+          default="16384"/>
+        </xsd:extension>
+      </xsd:simpleContent>
+  </xsd:complextType>
+  
+  <xsd:complexType name="PublicAddress">
+    <xsd:attribute name="exclusive" type="xsd:boolean" use="optional"
+      default="false"/>
+  </xsd:complexType>
+  
+  <xsd:complexType name="RendezVousService">
+    <xsd:attribute name="enabled" type="xsd:boolean" use="optional"
+      default="false"/>
+    <xsd:sequence>
+      <xsd:element name="autoStart" type="jxta:AutoStart" minOccurs="0"
+        maxOccurs="1" default="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name="RelayService">
+    <xsd:attribute name="enabled" type="xsd:boolean" use="optional"
+      default="false"/>
+    <xsd:attribute name="queueSize" type="xsd:nonNegativeInterger"
+      use="optional" default="100"/>
+    <xsd:sequence>
+      <xsd:element name="incoming" type="jxta:ServiceEndpoint" minOccurs="0"
+        maxOccurs="1"/>
+      <xsd:element name="outgoing" type="jxta:ServiceEndpoint" minOccurs="0"
+        maxOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name="EndpointService">
+    <xsd:attribute name="queueSize" type="xsd:positiveInteger" use="optional"
+      default="20"/>
+  </xsd:complexType>
+  
+  <xsd:complexType name="ProxyService">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:anyURI">
+       <xsd:attribute name="enabled" type="xsd:boolean" use="optional"
+         default="false"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  
+  <xsd:element name="AutoStart">
+    <xsd:simpleContent>
+      <xsd:extension base="nonNegativeInteger">
+        <xsd:attribute name="enabled" type="xsd:boolean" use="optional"
+          default="false"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:element>
+  
+  <xsd:complexType name="ServiceEndpoint">
+    <xsd:attribute name="enabled" type="xsd:boolean" use="optional"
+      default="false"/>
+    <xsd:attribute name="maximum" type="xsd:positiveInteger" use="optional"
+      default="1"/>
+    <xsd:attribute name="lease" type="xsd:positiveInteger" use="optional"
+      default="7200000"/>
+  </xsd:complexType>
+</xsd:schema>

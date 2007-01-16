@@ -1,0 +1,1465 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<frame id="id_optionsframe" 
+	size="650,380" 
+	title="app_Title" 
+	IconImage="img_App" 
+	Modal="true"
+	bundle="net.jxta.ext.config.ui.locale.config" 
+	locale="en">
+
+	<panel layout="BorderLayout" >
+
+<!-- 
+	
+	****** Tree Panel
+	
+-->
+
+		<panel id="id_cfgtreepanel" 
+			constraints="BorderLayout.LINE_START">
+	        <scrollPane>
+				<tree id="id_cfgtree" 
+					initclass="net.jxta.ext.config.ui.ConfigTreeModel()"/>
+	        </scrollPane>
+		</panel>
+		
+		<panel id="id_cfgdlgpanel"
+			layout="CardLayout" 
+			constraints="BorderLayout.CENTER">
+
+<!-- 
+	
+	****** Basic Card
+	
+-->
+
+			<panel id="id_cfgbasiccard" constraints="c1" layout="BorderLayout">
+
+				<panel layout="GridBagLayout"
+					constraints="BorderLayout.PAGE_START">
+				
+					<label
+						text="lbl_peername">
+						<gridbagconstraints 
+							gridy="0" 
+							gridx="0"
+							weigthx="0.2"
+							gridwidth="1" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+							
+					</label>
+					
+					<textfield id="id_peername"
+						text="">
+						<gridbagconstraints 
+							gridy="0" 
+							gridx="1" 
+							weightx="0.8"
+							gridwidth="GridBagConstraints.REMAINDER" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+					</textfield>
+	
+					<label text="lbl_peernamehint">
+						<gridbagconstraints 
+							gridy="1"  
+							gridx="0"
+							weigthx="0.2"
+							gridwidth="2" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,15,2"/>
+					</label>
+
+					<checkbox id="id_peerprofilemethod" 
+							actionCommand="enableManualProfile"
+							text="lbl_peerprofilemethod"
+							selected="true">
+						<gridbagconstraints 
+							gridy="3" 
+							gridx="0"
+							weigthx="0.2"
+							gridwidth="2" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+						
+					</checkbox>
+						
+					<label text="lbl_peerprofile">
+						<gridbagconstraints 
+							gridy="4" 
+							gridx="0"
+							weigthx="0.2"
+							gridwidth="1" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+							
+					</label>
+	
+					<combobox id="id_peerprofilecombo"
+							initclass="net.jxta.ext.config.ui.ProfileComboModel" 
+							Action="selectAction" 
+							PrototypeDisplayValue="12345678|12345678"
+							selectedItem="DEFAULT">
+						<gridbagconstraints 
+							gridy="4" 
+							gridx="1" 
+							weightx="0.8"
+							gridwidth="1" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+					</combobox>
+	
+					<textfield id="id_manualpeerprofile"
+							text=""
+							visible="false">
+						<gridbagconstraints 
+							gridy="4" 
+							gridx="1" 
+							weightx="0.8"
+							gridwidth="1" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+					</textfield>
+					
+					<label text="lbl_tracelevel">
+						<gridbagconstraints 
+							gridy="5" 
+							gridx="0"
+							weigthx="0.2"
+							gridwidth="1" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+					</label>
+	
+					<combobox id="id_tracelevel"
+						initclass="net.jxta.ext.config.ui.TraceComboModel" 
+						actionCommand="selectAction" 
+						PrototypeDisplayValue="12345678|12345678">
+						<gridbagconstraints 
+							gridy="5" 
+							gridx="1" 
+							weightx="0.8"
+							gridwidth="1" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+					</combobox>
+
+					<checkbox id="id_advenabled" 
+						actionCommand="advancedAction"						
+						text="lbl_advenabled">	
+						<gridbagconstraints 
+							gridy="8" 
+							gridx="0" 
+							weightx="0.2"
+							gridwidth="2" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+					</checkbox>
+
+				</panel>
+
+			</panel>
+
+<!-- 
+	
+	****** Rdv Settings
+	
+-->
+			
+			<panel id="id_cfgrdvcard" constraints="c2" layout="Borderlayout">
+				
+				<panel layout="GridBagLayout"
+					constraints="BorderLayout.PAGE_START">
+
+					<checkbox id="id_cfgactasjxtaproxy"
+						actionCommand="AC_enableactasjxtaproxy"						
+						text="lbl_actasjxtaproxy"
+						selected="false">
+						<gridbagconstraints 
+							gridy="1" 
+							gridx="0"
+							weigthx="0.1"
+							gridwidth="2" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+					</checkbox>
+	
+					<label text="lbl_availabletcprdv">
+						<gridbagconstraints 
+							gridy="2" 
+							gridx="0" 
+							weightx="0.1"
+							gridwidth="2" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+					</label>
+	
+					<textfield id="id_cfgtcprdvaddr"
+						text="">
+						<gridbagconstraints 
+							gridy="3" 
+							gridx="0" 
+							weightx="0.1"
+							gridwidth="2" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+					</textfield>
+	
+					<textfield id="id_cfgtcprdvport"
+						text="">
+						<gridbagconstraints 
+							gridy="3" 
+							gridx="2" 
+							weightx="0.1"
+							gridwidth="1" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+					</textfield>>
+	
+					<button id="id_cfgaddtcprdvbtn"
+						ActionCommand="AC_addtcprdv"
+						text="lbl_buttonplus">
+						<gridbagconstraints 
+							gridy="3" 
+							gridx="3" 
+							weightx="0.1"
+							gridwidth="1" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+					</button>
+	
+					<scrollPane>
+						<gridbagconstraints 
+							gridy="4" 
+							gridx="0" 
+							weightx="0.1"
+							gridwidth="3" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+						<list id="id_cfgtcprdvlist"
+							initclass="javax.swing.DefaultListModel"
+							PrototypeDisplayValue="tcp://192.168.0.1:9700|tcp://192.168.0.1:9700"
+							visibleRowCount="3">
+						</list>
+					</scrollPane>
+	
+					<button id="id_cfgdeltcprdvbtn"
+						ActionCommand="AC_deltcprdv"
+						text="lbl_buttonminus">
+						<gridbagconstraints 
+							gridy="4" 
+							gridx="3" 
+							weightx="0.1"
+							gridwidth="1" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+					</button>
+					
+					<label text="lbl_availablehttprdv">
+						<gridbagconstraints 
+							gridy="5" 
+							gridx="0" 
+							weightx="0.1"
+							gridwidth="2" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+					</label>
+	
+					<textfield id="id_cfghttprdvaddr"
+						text="">
+						<gridbagconstraints 
+							gridy="6" 
+							gridx="0" 
+							weightx="0.1"
+							gridwidth="2" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+					</textfield>
+	
+					<textfield id="id_cfghttprdvport"
+						text="">
+						<gridbagconstraints 
+							gridy="6" 
+							gridx="2" 
+							weightx="0.1"
+							gridwidth="1" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+					</textfield>>
+	
+					<button id="id_cfgaddhttprdvbtn"
+						ActionCommand="AC_addhttprdv"
+						text="lbl_buttonplus">
+						<gridbagconstraints 
+							gridy="6" 
+							gridx="3" 
+							weightx="0.1"
+							gridwidth="1" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+					</button>
+	
+					<scrollPane>
+						<gridbagconstraints 
+							gridy="7" 
+							gridx="0" 
+							weightx="0.1"
+							gridwidth="3" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+						<list id="id_cfghttprdvlist"
+							initclass="javax.swing.DefaultListModel"
+							PrototypeDisplayValue="tcp://192.168.0.1:9700|tcp://192.168.0.1:9700"
+							visibleRowCount="3">
+						</list>
+					</scrollPane>
+	
+					<button id="id_cfgdelhttprdvbtn"
+						ActionCommand="AC_delhttprdv"
+						text="lbl_buttonminus">
+						<gridbagconstraints 
+							gridy="7" 
+							gridx="3" 
+							weightx="0.1"
+							gridwidth="1" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+					</button>
+
+					<checkbox id="id_useonlycfgedrdv"
+						text="lbl_useonlycfgedrdv">
+						<gridbagconstraints 
+							gridy="8" 
+							gridx="0"
+							weigthx="0.1"
+							gridwidth="2" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+					</checkbox>
+					
+				</panel>
+			</panel>
+
+<!-- 
+	
+	****** Relay Settings
+	
+-->
+
+							
+			<panel id="id_cfgrlycard" constraints="c3" layout="BorderLayout">
+
+				<panel layout="GridBagLayout"
+					constraints="BorderLayout.PAGE_START">
+
+					<checkbox id="id_cfguserly"
+						actionCommand="AC_enableuserly"						
+						text="lbl_userly"
+						selected="false">
+						<gridbagconstraints 
+							gridy="1" 
+							gridx="0"
+							weigthx="0.1"
+							gridwidth="2" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+					</checkbox>
+	
+					<label text="lbl_availabletcprly"
+						enabled="false">
+						<gridbagconstraints 
+							gridy="2" 
+							gridx="0" 
+							weightx="0.1"
+							gridwidth="2" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+					</label>
+	
+					<textfield id="id_cfgtcprlyaddr"
+						text=""
+						enabled="false">
+						<gridbagconstraints 
+							gridy="3" 
+							gridx="0" 
+							weightx="0.1"
+							gridwidth="2" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+					</textfield>
+	
+					<textfield id="id_cfgtcprlyport"
+						text=""
+						enabled="false">
+						<gridbagconstraints 
+							gridy="3" 
+							gridx="2" 
+							weightx="0.1"
+							gridwidth="1" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+					</textfield>>
+	
+					<button id="id_cfgaddtcprly"
+						ActionCommand="AC_addtcprly"
+						text="lbl_buttonplus"
+						enabled="false">
+						<gridbagconstraints 
+							gridy="3" 
+							gridx="3" 
+							weightx="0.1"
+							gridwidth="1" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+					</button>
+	
+					<scrollPane>
+						<gridbagconstraints 
+							gridy="4" 
+							gridx="0" 
+							weightx="0.1"
+							gridwidth="3" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+						<list id="id_cfgtcprlylist"
+							initclass="javax.swing.DefaultListModel"
+							PrototypeDisplayValue="tcp://192.168.0.1:9700|tcp://192.168.0.1:9700"
+							visibleRowCount="3"
+							enabled="false">
+						</list>
+					</scrollPane>
+	
+					<button id="id_cfgdeltcprly"
+						ActionCommand="AC_deltcprly"
+						text="lbl_buttonminus"
+						enabled="false">
+						<gridbagconstraints 
+							gridy="4" 
+							gridx="3" 
+							weightx="0.1"
+							gridwidth="1" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+					</button>
+					
+					<label text="lbl_availablehttprly"
+						enabled="false">
+						<gridbagconstraints 
+							gridy="5" 
+							gridx="0" 
+							weightx="0.1"
+							gridwidth="2" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+					</label>
+	
+					<textfield id="id_cfghttprlyaddr" 
+						text=""
+						enabled="false">
+						<gridbagconstraints 
+							gridy="6" 
+							gridx="0" 
+							weightx="0.1"
+							gridwidth="2" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+					</textfield>
+	
+					<textfield id="id_cfghttprlyport"
+						text=""
+						enabled="false">
+						<gridbagconstraints 
+							gridy="6" 
+							gridx="2" 
+							weightx="0.1"
+							gridwidth="1" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+                    </textfield>>
+	
+					<button id="id_cfgaddhttprly"
+						ActionCommand="AC_addhttprly"
+						text="lbl_buttonplus"
+						enabled="false">
+						<gridbagconstraints 
+							gridy="6" 
+							gridx="3" 
+							weightx="0.1"
+							gridwidth="1" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+					</button>
+	
+					<scrollPane>
+						<gridbagconstraints 
+							gridy="7" 
+							gridx="0" 
+							weightx="0.1"
+							gridwidth="3" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+						<list id="id_cfghttprlylist"
+							initclass="javax.swing.DefaultListModel"
+							PrototypeDisplayValue="tcp://192.168.0.1:9700|tcp://192.168.0.1:9700"
+							visibleRowCount="3"
+							enabled="false">
+						</list>
+					</scrollPane>
+	
+					<button id="id_cfgdelhttprly"
+						ActionCommand="AC_delhttprly"
+						text="lbl_buttonminus"
+						enabled="false">
+						<gridbagconstraints 
+							gridy="7" 
+							gridx="3" 
+							weightx="0.1"
+							gridwidth="1" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+					</button>
+	
+				</panel>
+
+			</panel>
+						
+<!-- 
+	
+	****** Transport Settings: tcp
+	
+-->
+							
+			<panel id="id_cfgtcpcard" constraints="c4" layout="BorderLayout">
+
+				<panel id="id_cfgtcppanel" 
+					layout="BorderLayout"
+					constraints="BorderLayout.PAGE_START"
+					Border="EtchedBorder">
+
+					<panel id="id_cfgtcptransport" 
+						layout="GridBagLayout"
+						constraints="BorderLayout.PAGE_START"
+						Border="EtchedBorder">	
+						
+						<checkbox id="id_tcpenabled" 
+							actionCommand="enableTCPSettings" 
+							text="lbl_tcpenabled"
+							selected="true">
+							<gridbagconstraints 
+								gridy="0" 
+								gridx="0"
+								weigthx="0.2"
+								gridwidth="1" 
+								fill="GridBagConstraints.HORIZONTAL"
+								insets="2,2,2,2"/>
+						</checkbox>
+		
+						<checkbox id="id_tcpmulticast"
+							text="lbl_tcpmulticast"
+							selected="true">
+							<gridbagconstraints 
+								gridy="0" 
+								gridx="2"
+								weigthx="0.2"
+								gridwidth="1" 
+								fill="GridBagConstraints.HORIZONTAL"
+								insets="2,2,2,2"/>
+						</checkbox>
+		
+						<checkbox id="id_tcpmanualaddresses" 
+							text="lbl_tcpmanualaddresses"
+							actionCommand="enableManualTcpAddress" >
+							<gridbagconstraints 
+								gridy="1" 
+								gridx="0"
+								weigthx="0.2"
+								gridwidth="1" 
+								fill="GridBagConstraints.HORIZONTAL"
+								insets="2,2,2,2"/>
+						</checkbox>
+		
+						<combobox id="id_tcpautoentry"
+							initclass="net.jxta.ext.config.ui.TcpAddressComboModel" 
+							Action="selectAction" 
+							PrototypeDisplayValue="192.168.0.1|192.168.0.1">
+							<gridbagconstraints 
+								gridy="1" 
+								gridx="1" 
+								weightx="0.3"
+								gridwidth="1" 
+								fill="GridBagConstraints.HORIZONTAL"
+								insets="2,2,2,2"/>
+						</combobox>
+	
+						<textfield id="id_tcpmanualentry"
+							text="" 
+							Visible="false">
+							<gridbagconstraints 
+								gridy="1" 
+								gridx="1" 
+								weightx="0.3"
+								gridwidth="1" 
+								fill="GridBagConstraints.HORIZONTAL"
+								insets="2,2,2,2"/>
+						</textfield>
+		
+						<textfield id="id_cfgtcptranspport"
+							text="9701">
+							<gridbagconstraints 
+								gridy="1" 
+								gridx="2" 
+								weightx="0.3"
+								gridwidth="1" 
+								fill="GridBagConstraints.HORIZONTAL"
+								insets="2,2,2,2"/>
+						</textfield>>
+						
+						<checkbox id="id_tcpenableoutgoing"
+							text="lbl_tcpenableoutgoing"
+							selected="true">
+							<gridbagconstraints 
+								gridy="2" 
+								gridx="0"
+								weigthx="0.2"
+								gridwidth="2" 
+								fill="GridBagConstraints.HORIZONTAL"
+								insets="2,2,2,2"/>
+						</checkbox>
+		
+						<checkbox id="id_tcphideprivate"
+							text="lbl_tcphideprivate">
+							<gridbagconstraints 
+								gridy="2" 
+								gridx="2"
+								weigthx="0.3"
+								gridwidth="GridBagConstraints.REMAINDER" 
+								fill="GridBagConstraints.HORIZONTAL"
+								insets="2,2,2,2"/>
+						</checkbox>
+		
+						<checkbox id="id_tcpenableincoming"
+							text="lbl_tcpenableincoming"
+							action="enableTCPIncoming"
+							selected="true">
+							<gridbagconstraints 
+								gridy="3" 
+								gridx="0"
+								weigthx="0.2"
+								gridwidth="2" 
+								fill="GridBagConstraints.HORIZONTAL"
+								insets="2,2,2,2"/>
+						</checkbox>
+		
+						<checkbox id="id_tcphaspublicaddress" 
+								actionCommand="enableTCPPublicAddress" 
+								text="lbl_tcphaspublicaddress">
+							<gridbagconstraints 
+								gridy="4"  
+								gridx="0"
+								weigthx="0.2"
+								gridwidth="1" 
+								fill="GridBagConstraints.HORIZONTAL"
+								insets="2,2,2,2"/>
+						</checkbox>
+		
+						<textfield id="id_tcppublicaddress"
+							text="" 
+							enabled="false">
+							<gridbagconstraints 
+								gridy="4" 
+								gridx="1" 
+								weightx="0.3"
+								gridwidth="1" 
+								fill="GridBagConstraints.HORIZONTAL"
+								insets="2,2,2,2"/>
+						</textfield>
+		
+						<textfield id="id_tcppublicport"
+							text="9701"
+							enabled="false">
+							<gridbagconstraints 
+								gridy="4" 
+								gridx="2" 
+								weightx="0.3"
+								gridwidth="1" 
+								fill="GridBagConstraints.HORIZONTAL"
+								insets="2,2,2,2"/>
+						</textfield>>
+						
+						<panel id="id_cfgtcpbuttons" 
+							layout="GridLayout(1,0)">
+							<gridbagconstraints 
+								gridy="5" 
+								gridx="0" 
+								weightx="0.2"
+								gridwidth="2" 
+								fill="GridBagConstraints.HORIZONTAL"
+								insets="2,2,2,2"/>
+	
+							<button id="id_cfgaddtcptranspbtn"
+								text="lbl_buttonplus"
+								actionCommand="AC_addtcptransp"/>
+							<button id="id_cfgdeltcptranspbtn"
+								text="lbl_buttonminus" 
+								actionCommand="AC_deltcptransp"/>
+								
+						</panel>
+
+					</panel>
+					
+					<scrollPane id="id_cfgtcpscrollpane"
+						autoscrolls="true"
+						VerticalScrollBarPolicy="JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED"
+						HorizontalScrollBarPolicy="JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED"
+						constraints="BorderLayout.PAGE_END"
+						Border="EtchedBorder">
+						<table id="id_cfgtcptransporttable"
+							initclass="net.jxta.ext.config.ui.TcpTransportTableModel"
+							autoscrolls="true"/>
+					</scrollPane>
+
+				</panel>
+				
+			</panel>
+
+<!-- 
+	
+	****** Transport Settings: http
+	
+-->
+			
+			<panel id="id_cfghttpcard" constraints="c5" layout="BorderLayout">
+
+				<panel id="id_cfghttppanel" 
+					layout="BorderLayout"
+					constraints="BorderLayout.PAGE_START"
+					Border="EtchedBorder">
+
+					<panel id="id_cfghttptransport" 
+						layout="GridBagLayout"
+						constraints="BorderLayout.PAGE_START"
+						Border="EtchedBorder">	
+						
+						<checkbox id="id_httpenabled" 
+							actionCommand="enableHTTPSettings"
+							text="lbl_httpenabled"
+							selected="true">
+							<gridbagconstraints 
+								gridy="0" 
+								gridx="0"
+								weigthx="0.2"
+								gridwidth="1" 
+								fill="GridBagConstraints.HORIZONTAL"
+								insets="2,2,2,2"/>
+						</checkbox>
+		
+						<checkbox id="id_httpmanualaddresses" 
+							text="lbl_httpmanualaddresses"
+							actionCommand="enableManualHttpAddress">
+							<gridbagconstraints 
+								gridy="1" 
+								gridx="0"
+								weigthx="0.2"
+								gridwidth="1" 
+								fill="GridBagConstraints.HORIZONTAL"
+								insets="2,2,2,2"/>
+						</checkbox>
+		
+						<combobox id="id_httpautoentry"
+							initclass="net.jxta.ext.config.ui.TcpAddressComboModel" 
+							Action="selectAction" 
+							PrototypeDisplayValue="12345678|12345678">
+							<gridbagconstraints 
+								gridy="1" 
+								gridx="1" 
+								weightx="0.3"
+								gridwidth="1" 
+								fill="GridBagConstraints.HORIZONTAL"
+								insets="2,2,2,2"/>
+						</combobox>
+	
+						<textfield id="id_httpmanualentry"
+							text="" 
+							PrototypeDisplayValue="12345678"
+							Visible="false">
+							<gridbagconstraints 
+								gridy="1" 
+								gridx="1" 
+								weightx="0.3"
+								gridwidth="1" 
+								fill="GridBagConstraints.HORIZONTAL"
+								insets="2,2,2,2"/>
+						</textfield>
+		
+						<textfield id="id_cfghttptranspport"
+							text="9701">
+							<gridbagconstraints 
+								gridy="1" 
+								gridx="2" 
+								weightx="0.3"
+								gridwidth="1" 
+								fill="GridBagConstraints.HORIZONTAL"
+								insets="2,2,2,2"/>
+						</textfield>>
+						
+						<checkbox id="id_httpenableoutgoing"
+							text="lbl_httpenableoutgoing"
+							selected="true">
+							<gridbagconstraints 
+								gridy="2" 
+								gridx="0"
+								weigthx="0.2"
+								gridwidth="2" 
+								fill="GridBagConstraints.HORIZONTAL"
+								insets="2,2,2,2"/>
+						</checkbox>
+		
+						<checkbox id="id_httphideprivate"
+							text="lbl_httphideprivate">
+							<gridbagconstraints 
+								gridy="2" 
+								gridx="2"
+								weigthx="0.3"
+								gridwidth="GridBagConstraints.REMAINDER" 
+								fill="GridBagConstraints.HORIZONTAL"
+								insets="2,2,2,2"/>
+						</checkbox>
+		
+						<checkbox id="id_httpenableincoming" 
+							text="lbl_httpenableincoming">
+							<gridbagconstraints 
+								gridy="3" 
+								gridx="0"
+								weigthx="0.2"
+								gridwidth="2" 
+								fill="GridBagConstraints.HORIZONTAL"
+								insets="2,2,2,2"/>
+						</checkbox>
+		
+						<checkbox id="id_httphaspublicaddress" 
+								actionCommand="enableHTTPPublicAddress" 
+								text="lbl_httphaspublicaddress">
+							<gridbagconstraints 
+								gridy="4"  
+								gridx="0"
+								weigthx="0.2"
+								gridwidth="1" 
+								fill="GridBagConstraints.HORIZONTAL"
+								insets="2,2,2,2"/>
+						</checkbox>
+		
+						<textfield id="id_httppublicaddress" 
+								text="" 
+								enabled="false">
+							<gridbagconstraints 
+								gridy="4" 
+								gridx="1" 
+								weightx="0.3"
+								gridwidth="1" 
+								fill="GridBagConstraints.HORIZONTAL"
+								insets="2,2,2,2"/>
+						</textfield>
+		
+						<textfield id="id_httppublicport"
+								text="9701"
+								enabled="false">
+							<gridbagconstraints 
+								gridy="4" 
+								gridx="2" 
+								weightx="0.3"
+								gridwidth="1" 
+								fill="GridBagConstraints.HORIZONTAL"
+								insets="2,2,2,2"/>
+						</textfield>>
+		
+						<checkbox id="id_httpuseproxy" 
+								actionCommand="enableHTTPProxy" 
+								text="lbl_httpuseproxy">
+							<gridbagconstraints 
+								gridy="5"  
+								gridx="0"
+								weigthx="0.2"
+								gridwidth="1" 
+								fill="GridBagConstraints.HORIZONTAL"
+								insets="2,2,2,2"/>
+						</checkbox>
+		
+						<textfield id="id_httpproxyaddress" 
+								text="myProxy.myDomain" 
+								enabled="false">
+							<gridbagconstraints 
+								gridy="5" 
+								gridx="1" 
+								weightx="0.3"
+								gridwidth="1" 
+								fill="GridBagConstraints.HORIZONTAL"
+								insets="2,2,2,2"/>
+						</textfield>
+		
+						<textfield id="id_httpproxyport" 
+								text="8080  "
+								enabled="false">
+							<gridbagconstraints 
+								gridy="5" 
+								gridx="2" 
+								weightx="0.3"
+								gridwidth="1" 
+								fill="GridBagConstraints.HORIZONTAL"
+								insets="2,2,2,2"/>
+						</textfield>>
+	
+						<panel layout="GridLayout(1,0)">
+							<gridbagconstraints 
+								gridy="6" 
+								gridx="0" 
+								weightx="0.3"
+								gridwidth="2" 
+								fill="GridBagConstraints.HORIZONTAL"
+								insets="2,2,2,2"/>
+	
+							<button id="id_cfgaddhttptranspbtn"
+								text="lbl_buttonplus"
+								actionCommand="AC_addhttptransp"/>
+							<button id="id_cfgdelhttptranspbtn"
+								text="lbl_buttonminus" 
+								actionCommand="AC_delhttptransp"/>
+								
+						</panel>
+
+					</panel>
+					
+					<scrollPane id="id_cfghttpscrollpane"
+						autoscrolls="true"
+						VerticalScrollBarPolicy="JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED"
+						HorizontalScrollBarPolicy="JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED"
+						constraints="BorderLayout.PAGE_END"
+						Border="EtchedBorder">
+						<table id="id_cfghttptransporttable"
+							initclass="net.jxta.ext.config.ui.HttpTransportTableModel"
+							autoscrolls="true"/>
+					</scrollPane>
+
+				</panel>
+				
+			</panel>
+
+<!-- 
+	
+	****** Security Card
+	
+-->
+
+			
+			<panel id="id_cfgsecuritycard" constraints="c6" layout="BorderLayout">
+
+				<panel layout="GridBagLayout"
+					constraints="BorderLayout.PAGE_START">
+	
+					<label text="lbl_securepeername">
+						<gridbagconstraints 
+							gridy="0" 
+							gridx="0"
+							weigthx="0.2"
+							gridwidth="1" 
+							fill="GridBagConstraints.NONE"
+							insets="2,2,2,2"/>
+							
+					</label>
+					
+					<textfield id="id_securepeername"
+						text="">
+						<gridbagconstraints 
+							gridy="0" 
+							gridx="1" 
+							weightx="0.7"
+							gridwidth="GridBagConstraints.REMAINDER" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+					</textfield>
+	
+					<label text="lbl_peerpassword">
+						<gridbagconstraints 
+							gridy="1"  
+							gridx="0"
+							weigthx="0.2"
+							gridwidth="1" 
+							fill="GridBagConstraints.NONE"
+							insets="2,2,2,2"/>
+					</label>
+	
+					<passwordfield id="id_peerpassword"
+						name="peerpassword" 
+						text="">
+						<gridbagconstraints 
+							gridy="1" 
+							gridx="1"
+							weightx="0.7"
+							gridwidth="GridBagConstraints.REMAINDER" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+					</passwordfield>
+	
+					<label text="lbl_peerpasswordverify">
+						<gridbagconstraints 
+							gridy="2"  
+							gridx="0"
+							weigthx="0.2"
+							gridwidth="1" 
+							fill="GridBagConstraints.NONE"
+							insets="2,2,2,2"/>
+					</label>
+	
+					<passwordfield id="id_peerpasswordverify"
+						name="peerpasswordverify"
+						text="">
+						<gridbagconstraints 
+							gridy="2" 
+							gridx="1"
+							weightx="0.7"
+							gridwidth="GridBagConstraints.REMAINDER" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+					</passwordfield>
+	
+					<button text="lbl_importrootcafile"
+							actionCommand="importCAFile">
+						<gridbagconstraints 
+							gridy="3" 
+							gridx="0"
+							weigthx="0.2"
+							gridwidth="1" 
+							fill="GridBagConstraints.NONE"
+							insets="2,2,2,2"/>
+							
+					</button>
+					
+					<textfield id="id_certfile"
+							text="" 
+							enabled="false">
+						<gridbagconstraints 
+							gridy="3" 
+							gridx="1" 
+							weightx="0.7"
+							gridwidth="GridBagConstraints.REMAINDER" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+					</textfield>
+					
+				</panel>
+
+			</panel>
+							
+			<panel id="id_cfgservicescard" constraints="c7" layout="BorderLayout">
+
+				<panel layout="GridBagLayout"
+					constraints="BorderLayout.PAGE_START">
+					
+					<label text="not yet implemented"/>
+					
+				</panel>
+				
+			</panel>
+			
+<!-- 
+	
+	****** Network General (dl rdv & rly lists)
+	
+-->			
+			<panel id="id_cfgnetworkcard" constraints="c8" layout="BorderLayout">
+				
+				<panel layout="GridBagLayout"
+					constraints="BorderLayout.PAGE_START">
+	
+					<textarea text="lbl_downloadrdvrlyhint1" 
+						enabled="false"
+						rows="3"
+						LineWrap="true"
+						WrapStyleWord="true">
+						
+						<gridbagconstraints 
+							gridy="0" 
+							gridx="0" 
+							weightx="0.1"
+							gridwidth="1" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+						
+					</textarea>
+					
+					<button id="id_downloadrdvrly"
+							actionCommand="downloadrdvrly"
+							text="lbl_downloadrdvrly">
+						<gridbagconstraints 
+							gridy="1" 
+							gridx="0" 
+							weightx="0.1"
+							gridwidth="1" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+					</button>
+						
+				</panel>
+					
+			</panel>
+
+<!-- 
+	
+	****** Rendezvous Service
+	
+-->
+			<panel id="id_cfgrdvservicecard" constraints="c9" layout="BorderLayout">
+	
+				<panel layout="GridBagLayout"
+					constraints="BorderLayout.PAGE_START">
+
+					<checkbox id="id_cfgrdvservice"
+						actionCommand="AC_enablerdvservice"
+						text="lbl_actasrdv"
+						selected="false">
+						<gridbagconstraints 
+							gridy="0" 
+							gridx="0"
+							weigthx="0.2"
+							gridwidth="2" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+					</checkbox>
+
+					<checkbox id="id_rdvautostart"
+						text="lbl_rdvautostart"
+						enabled="false">
+						<gridbagconstraints 
+							gridy="1" 
+							gridx="0"
+							weigthx="0.2"
+							gridwidth="2" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+					</checkbox>
+
+					<label text="lbl_rdvautostartinterval"
+						enabled="false">
+						<gridbagconstraints 
+							gridy="2" 
+							gridx="0"
+							weigthx="0.2"
+							gridwidth="1" 
+							fill="GridBagConstraints.NONE"
+							insets="2,2,2,2"/>
+								
+					</label>
+						
+					<textfield id="id_rdvautostartinterval"
+						text=""
+						enabled="false">
+						<gridbagconstraints 
+							gridy="2" 
+							gridx="1" 
+							weightx="0.7"
+							gridwidth="GridBagConstraints.REMAINDER" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+					</textfield>
+
+				</panel>
+				
+			</panel>
+
+<!-- 
+	
+	****** Relay Service
+	
+-->
+
+			<panel id="id_cfgrlyservicecard" constraints="c10" layout="BorderLayout">
+	
+				<panel layout="GridBagLayout"
+					constraints="BorderLayout.PAGE_START">
+
+					<checkbox id="id_cfgrlyservice"
+						actionCommand="AC_enablerlyservice"
+						text="lbl_actasrly"
+						selected="false">
+						<gridbagconstraints 
+							gridy="0" 
+							gridx="0"
+							weigthx="0.2"
+							gridwidth="2" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+					</checkbox>
+
+					<label text="lbl_rlyqueuesize"
+						enabled="false">
+						<gridbagconstraints 
+							gridy="1" 
+							gridx="0"
+							weigthx="0.2"
+							gridwidth="1" 
+							fill="GridBagConstraints.NONE"
+							insets="2,2,2,2"/>
+								
+					</label>
+						
+					<textfield id="id_cfgrlyqueuesize"
+						text=""
+						enabled="false">
+						<gridbagconstraints 
+							gridy="1" 
+							gridx="1" 
+							weightx="0.7"
+							gridwidth="GridBagConstraints.REMAINDER" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+					</textfield>
+
+					<checkbox id="id_cfgrlyincoming"
+						text="lbl_rlyincoming"
+						selected="false"
+						enabled="false">
+						<gridbagconstraints 
+							gridy="2" 
+							gridx="0"
+							weigthx="0.2"
+							gridwidth="1" 
+							fill="GridBagConstraints.NONE"
+							insets="2,2,2,2"/>
+					</checkbox>
+
+					<label text="lbl_rlyincomingmax"
+						enabled="false">
+						<gridbagconstraints 
+							gridy="3" 
+							gridx="0"
+							weigthx="0.2"
+							gridwidth="1" 
+							fill="GridBagConstraints.NONE"
+							insets="2,2,2,2"/>
+								
+					</label>
+						
+					<textfield id="id_rlyincomingmax"
+						text=""
+						value="1"
+						enabled="false">
+						<gridbagconstraints 
+							gridy="3" 
+							gridx="1" 
+							weightx="0.7"
+							gridwidth="GridBagConstraints.REMAINDER" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+					</textfield>
+
+					<label text="lbl_rlyincominglease"
+						enabled="false">
+						<gridbagconstraints 
+							gridy="4" 
+							gridx="0"
+							weigthx="0.2"
+							gridwidth="1" 
+							fill="GridBagConstraints.NONE"
+							insets="2,2,2,2"/>
+								
+					</label>
+						
+					<textfield id="id_rlyincominglease"
+						text="7200000"
+						enabled="false">
+						<gridbagconstraints 
+							gridy="4" 
+							gridx="1" 
+							weightx="0.7"
+							gridwidth="GridBagConstraints.REMAINDER" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+					</textfield>
+
+					<checkbox id="id_cfgrlyoutgoing"
+						text="lbl_rlyoutgoing"
+						selected="false"
+						enabled="false">
+						<gridbagconstraints 
+							gridy="5" 
+							gridx="0"
+							weigthx="0.2"
+							gridwidth="1" 
+							fill="GridBagConstraints.NONE"
+							insets="2,2,2,2"/>
+					</checkbox>
+
+					<label text="lbl_rlyoutgoingmax"
+						enabled="false">
+						<gridbagconstraints 
+							gridy="6" 
+							gridx="0"
+							weigthx="0.2"
+							gridwidth="1" 
+							fill="GridBagConstraints.NONE"
+							insets="2,2,2,2"/>
+								
+					</label>
+						
+					<textfield id="id_rlyoutgoingmax"
+						text="" 
+						value="1"
+						enabled="false">
+						<gridbagconstraints 
+							gridy="6" 
+							gridx="1" 
+							weightx="0.7"
+							gridwidth="GridBagConstraints.REMAINDER" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+					</textfield>
+
+					<label text="lbl_rlyoutgoinglease"
+						enabled="false">
+						<gridbagconstraints 
+							gridy="7" 
+							gridx="0"
+							weigthx="0.2"
+							gridwidth="1" 
+							fill="GridBagConstraints.NONE"
+							insets="2,2,2,2"/>
+								
+					</label>
+						
+					<textfield id="id_rlyoutgoinglease"
+						text="7200000"
+						enabled="false">
+						<gridbagconstraints 
+							gridy="7" 
+							gridx="1" 
+							weightx="0.7"
+							gridwidth="GridBagConstraints.REMAINDER" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+					</textfield>
+
+				</panel>
+				
+			</panel>
+
+<!-- 
+	
+	****** Endpoint Service
+	
+-->
+
+			<panel id="id_cfgendpservicecard" constraints="c11" layout="BorderLayout">
+	
+				<panel layout="GridBagLayout"
+					constraints="BorderLayout.PAGE_START">
+
+					<checkbox id="id_cfgendpservice" 
+						actionCommand="AC_enableendpservice"
+						text="lbl_endpenabled"
+						selected="false">
+						<gridbagconstraints 
+							gridy="0" 
+							gridx="0"
+							weigthx="0.2"
+							gridwidth="2" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+					</checkbox>
+
+					<label text="lbl_endpqueuesize"
+						enabled="false">
+						<gridbagconstraints 
+							gridy="1" 
+							gridx="0"
+							weigthx="0.2"
+							gridwidth="1" 
+							fill="GridBagConstraints.NONE"
+							insets="2,2,2,2"/>
+								
+					</label>
+						
+					<textfield id="id_cfgendpqueuesize" 
+						enabled="false"
+						text="">
+						<gridbagconstraints 
+							gridy="1" 
+							gridx="1" 
+							weightx="0.7"
+							gridwidth="GridBagConstraints.REMAINDER" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+					</textfield>
+
+				</panel>
+				
+			</panel>
+
+<!-- 
+	
+	****** Proxy Service
+	
+-->
+
+			<panel id="id_cfgproxyservicecard" constraints="c12" layout="BorderLayout">
+	
+				<panel layout="GridBagLayout"
+					constraints="BorderLayout.PAGE_START">
+
+					<checkbox id="id_cfgproxyservice"
+						actionCommand="AC_enableproxyservice"
+						text="lbl_prxsvcenabled"
+						selected="false">
+						<gridbagconstraints 
+							gridy="0" 
+							gridx="0"
+							weigthx="0.2"
+							gridwidth="2" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+					</checkbox>
+
+					<label text="lbl_prxsvcuri"
+						enabled="false">
+						<gridbagconstraints 
+							gridy="1" 
+							gridx="0"
+							weigthx="0.2"
+							gridwidth="1" 
+							fill="GridBagConstraints.NONE"
+							insets="2,2,2,2"/>
+								
+					</label>
+						
+					<textfield id="id_prxsvcuri" 
+						text=""
+						enabled="false">
+						<gridbagconstraints 
+							gridy="1" 
+							gridx="1" 
+							weightx="0.7"
+							gridwidth="GridBagConstraints.REMAINDER" 
+							fill="GridBagConstraints.HORIZONTAL"
+							insets="2,2,2,2"/>
+					</textfield>
+
+				</panel>
+				
+			</panel>
+
+		</panel>	
+
+<!-- 
+	
+	****** Main Button Panel
+	
+-->
+
+		<panel id="id_cfgbuttonpanel" constraints="BorderLayout.PAGE_END">
+			<!-- TODO remove actions and utilize actionCommand instead -->
+			<button text="ID_OK" ActionCommand="AC_OK"/>
+			<button text="ID_CANCEL" ActionCommand="AC_CANCEL"/>
+				
+		</panel>
+	</panel>
+
+</frame>
