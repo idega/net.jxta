@@ -129,6 +129,9 @@
 	        <includes>
 	          <include>**/*.xerces</include>
 	        </includes>
+	        <includes>
+	          <include>**/*.xml</include>
+	        </includes>
 	      </resource>
 	    </resources>
   </build>
