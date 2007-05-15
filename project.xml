@@ -5,7 +5,7 @@
   <pomVersion>3</pomVersion>
   <name>JXTA</name>
   <artifactId>net.jxta</artifactId>
-  <currentVersion>1.0-SNAPSHOT</currentVersion>
+  <currentVersion>1.0</currentVersion>
   <inceptionYear>2006</inceptionYear>
   <shortDescription>JXTA</shortDescription>
   <versions>
