@@ -9,6 +9,11 @@
   <inceptionYear>2006</inceptionYear>
   <shortDescription>JXTA</shortDescription>
   <versions>
+    <version>
+      <id>1.0</id>
+      <name>1.0</name>
+      <tag>JXTA_1_0</tag>
+    </version>
   </versions>
   <branches/>
   <developers>
@@ -21,7 +26,7 @@
     </developer>
   </developers>
   <dependencies>
-      <dependency>
+    <dependency>
       <groupId>jdom</groupId>
       <artifactId>jdom</artifactId>
       <version>1.0</version>
@@ -31,7 +36,7 @@
         <idegaweb.bundle.include>false</idegaweb.bundle.include>
       </properties>
     </dependency>
-      <dependency>
+    <dependency>
       <groupId>jaxen</groupId>
       <artifactId>jaxen</artifactId>
       <version>1.0-FCS</version>
@@ -44,7 +49,7 @@
         <idegaweb.bundle.include>false</idegaweb.bundle.include>
       </properties>
     </dependency>
-       <dependency>
+    <dependency>
       <groupId>slide</groupId>
       <artifactId>saxpath</artifactId>
       <jar>saxpath.jar</jar>
@@ -54,7 +59,7 @@
         <idegaweb.bundle.include>false</idegaweb.bundle.include>
       </properties>
     </dependency>
-        <dependency>
+    <dependency>
       <groupId>log4j</groupId>
       <artifactId>log4j</artifactId>
       <version>1.2.8</version>
@@ -64,7 +69,7 @@
         <idegaweb.bundle.include>false</idegaweb.bundle.include>
       </properties>
     </dependency>
-            <dependency>
+    <dependency>
       <groupId>org.swixml</groupId>
       <artifactId>swixml</artifactId>
       <version>1.5.144</version>
@@ -73,7 +78,7 @@
         <idegaweb.bundle.include>true</idegaweb.bundle.include>
       </properties>
     </dependency>
-                <dependency>
+    <dependency>
       <groupId>bouncycastle</groupId>
       <artifactId>bcprov-jdk14</artifactId>
       <version>124</version>
@@ -82,7 +87,7 @@
         <idegaweb.bundle.include>true</idegaweb.bundle.include>
       </properties>
     </dependency>
-                    <dependency>
+    <dependency>
       <groupId>org.mortbay.jetty</groupId>
       <artifactId>jetty</artifactId>
       <version>4.2.12</version>
@@ -91,7 +96,7 @@
         <idegaweb.bundle.include>true</idegaweb.bundle.include>
       </properties>
     </dependency>
-                        <dependency>
+    <dependency>
       <groupId>xerces</groupId>
       <artifactId>xercesImpl</artifactId>
       <version>2.8.0</version>
@@ -111,29 +116,28 @@
       </properties>
     </dependency>
   </dependencies>
-  
-    <build>
-        <sourceDirectory>src/java</sourceDirectory>
-        <unitTestSourceDirectory>src/test</unitTestSourceDirectory>
-        <unitTest>
-            <includes>
-                <include>**/*Test.java</include>
-            </includes>
-        </unitTest>
-	    <resources>
-	      <resource>
-	       <directory>${basedir}/src/java</directory>
-	        <includes>
-	          <include>**/*.properties</include>
-	        </includes>
-	        <includes>
-	          <include>**/*.xerces</include>
-	        </includes>
-	        <includes>
-	          <include>**/*.xml</include>
-	        </includes>
-	      </resource>
-	    </resources>
+  <build>
+    <sourceDirectory>src/java</sourceDirectory>
+    <unitTestSourceDirectory>src/test</unitTestSourceDirectory>
+    <unitTest>
+      <includes>
+        <include>**/*Test.java</include>
+      </includes>
+    </unitTest>
+    <resources>
+      <resource>
+        <directory>${basedir}/src/java</directory>
+        <includes>
+          <include>**/*.properties</include>
+        </includes>
+        <includes>
+          <include>**/*.xerces</include>
+        </includes>
+        <includes>
+          <include>**/*.xml</include>
+        </includes>
+      </resource>
+    </resources>
   </build>
   <properties/>
 </project>
